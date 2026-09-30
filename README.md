@@ -7,10 +7,10 @@ Paste a support report and supply your own Pollinations API key. One direct `POS
 ## Run locally
 
 ```sh
-python -m http.server 8765 --directory dist
+python -m http.server 8765
 ```
 
-Open http://localhost:8765. No dependencies or build are required. Host `dist/` on any static HTTPS host for deployment.
+Open http://localhost:8765. No dependencies or build are required. Host `index.html`, `app.js`, `style.css` and `icon.svg` on any static HTTPS host for deployment. The API call and decision handling are in the root `app.js` source file.
 
 ## Keys and Pollen
 
@@ -23,7 +23,8 @@ This app calls the built-in Jev model directly. It does not need public access t
 Live browser tests of the actual UI against Jev:
 
 - Production HTTP 500 outage: **Technical / IMMEDIATE**, 100% team confidence, 97% urgency; three checklist items including alerting on-call; 504 input tokens.
-- Duplicate payment and feature request use the supplied sample buttons. All displayed probabilities come from Jev; the app contains no precomputed result fixtures.
+- Duplicate payment: **Billing / NORMAL QUEUE**, 100% team confidence, 14% urgency; the payment investigation checklist; 508 input tokens.
+- All displayed probabilities come from Jev; the app contains no precomputed result fixtures.
 
 The companion agent's same decision questions were also exercised with five live support reports, producing billing, technical, security, product and needs_info routes, and with ten unit tests. Request errors remain visible and do not trigger paid retries.
 
