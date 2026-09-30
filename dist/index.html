@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desk Signal — Support triage with Jev</title>
+  <meta name="description" content="Turn a support report into a team, urgency decision and actionable checklist with Pollinations Jev. Use your own Pollen.">
+  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="wordmark" href="./"><span class="signal-mark" aria-hidden="true">≋</span> DESK SIGNAL</a><a class="source" href="https://github.com/MetaMysteries8/desk-signal" target="_blank" rel="noopener">Source code</a></header>
+  <main>
+    <div class="intro"><p class="eyebrow">SUPPORT OPERATIONS / POWERED BY POLLINATIONS</p><h1>A clear next move.</h1><p>Paste a support report. Jev picks the team and estimates urgency; a checklist gives you the next steps.</p></div>
+    <div class="workspace">
+      <section class="input-pane" aria-labelledby="input-title">
+        <div class="pane-heading"><h2 id="input-title"><span class="step">01</span> The report</h2><span class="small">Text only</span></div>
+        <form id="triage-form">
+          <label for="report">What happened?</label><textarea id="report" name="report" rows="8" maxlength="12000" required placeholder="Include what you expected, what happened, and who is affected…"></textarea>
+          <div class="examples"><span>Try a report</span><button type="button" data-example="outage">Production outage</button><button type="button" data-example="billing">Duplicate charge</button><button type="button" data-example="feature">Feature request</button></div>
+          <div class="key-area"><label for="api-key">Your Pollinations API key</label><div class="key-row"><input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk_…" required><button type="button" id="clear-key">Clear</button></div><p class="small">Kept only in this page’s memory. Sent directly to Pollinations. <a href="https://enter.pollinations.ai/keys" target="_blank" rel="noopener">Get a key</a>.</p><label class="small" for="key-file">Or load a local key file (.txt)</label><input id="key-file" type="file" accept=".txt,text/plain" aria-label="Load a local key file"></div>
+          <div class="submit-row"><button type="submit" id="submit">Triage report</button><span class="small">One Jev call · Your Pollen</span></div>
+          <p id="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="result-pane" aria-labelledby="result-title">
+        <div class="pane-heading"><h2 id="result-title"><span class="step">02</span> The next move</h2><span class="small">Decided by Jev</span></div>
+        <div id="empty"><div class="empty-mark" aria-hidden="true">≋</div><h3>Ready when you are.</h3><p>Your route, probabilities and action checklist will appear here after a real decision.</p><div class="empty-tags"><span>Team</span><span>Urgency</span><span>Next steps</span></div></div>
+        <div id="result" hidden>
+          <div class="decision-heading"><div><p class="eyebrow">ROUTE TO</p><h3 id="team"></h3></div><span id="priority" class="badge"></span></div>
+          <div id="review" class="review" hidden>Human review required. Confirm the route before assignment.</div>
+          <div class="metrics"><div><span>Team confidence</span><strong id="confidence"></strong></div><div><span>Immediate urgency</span><strong id="urgency"></strong></div></div>
+          <h4>Team probabilities</h4><div id="probabilities"></div>
+          <div class="actions"><h4>Action checklist</h4><ul id="checklist"></ul></div>
+          <div class="result-bottom"><span id="tokens" class="small"></span><button type="button" id="copy">Copy report</button></div>
+          <p class="small limitation">AI suggestions need judgment. Nothing was assigned or sent, and no account was changed.</p>
+        </div>
+      </section>
+    </div>
+    <footer><span>Built for humans. Decisions by <a href="https://pollinations.ai" target="_blank" rel="noopener">Pollinations Jev</a>.</span><span>By <a href="https://github.com/MetaMysteries8">MetaMysteries8</a> with Codex AI assistance.</span></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
